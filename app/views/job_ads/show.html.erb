@@ -1,0 +1,17 @@
+<div class="container">
+  <%=
+    render 'shared/page_header',
+      title: @job_ad.name,
+      company_name: @job_ad.company_name,
+      company_email: @job_ad.company_email
+  %>
+
+  <div class="row">
+    <div class="col-12 col-lg-6">
+      <%= simple_format(@job_ad.description) %>
+    </div>
+    <div class="col-12 col-lg-5 offset-lg-1">
+    Form
+    </div>
+  </div>
+</div>

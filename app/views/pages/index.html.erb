@@ -1,1 +1,21 @@
-<h1>Jobs board</h1>
+<div class="container">
+  <%= render 'shared/page_header', title: 'Jobs Board' %>
+
+  <div class="row align-items-stretch">
+    <% @jobs.each do |job| %>
+      <div class="col-lg-3 col-md-4 col-sm-12 mb-3">
+        <div class="card position-relative">
+          <div class="card-body">
+            <h5 class="card-title">
+              <%= link_to job.company_name, job_ad_path(job), class: 'card-link stretched-link' %>
+            </h5>
+            <h6 class="card-subtitle mb-2 text-muted"><%= job.category %></h6>
+            <p class="card-text"><%= job.name %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+

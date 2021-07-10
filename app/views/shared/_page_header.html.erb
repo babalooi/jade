@@ -1,0 +1,18 @@
+<div class="row">
+    <div class="col-12">
+      <div class="bg-light gray p-5 my-5">
+        <header>
+          <h1><%= title %></h1>
+        </header>
+
+        <aside>
+          <% if local_assigns[:company_name] %>
+            <h3><%= company_name %></h3>
+          <% end %>
+          <% if local_assigns[:company_email] %>
+            <p><%= mail_to company_email %></p>
+          <% end %>
+        </aside>
+      </div>
+    </div>
+  </div>
