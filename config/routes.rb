@@ -3,4 +3,6 @@ Rails.application.routes.draw do
   root 'pages#index'
 
   resources :job_ads, only: [:show]
+
+  resources :job_applications
 end

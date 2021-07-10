@@ -1,4 +1,6 @@
 class JobAd < ApplicationRecord
+  has_many :job_applications, dependent: :destroy
+
   validates :name, presence: true
   validates :description, presence: true
   validates :company_name, presence: true
@@ -9,7 +11,7 @@ class JobAd < ApplicationRecord
     presence: true,
     format: {
       with: /\A([\w\.%\+\-]+)@([\w\-]+\.)+([\w]{2,})$\z/,
-      message: "Email not valid"
+      message: 'Email not valid'
     }
 
   def expired?

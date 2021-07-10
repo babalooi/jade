@@ -14,10 +14,12 @@
     <div class="col-12 col-lg-5 offset-lg-1">
       <% if @job_ad.expired? %>
         <div class="alert alert-danger" role="alert">
-          Applications for this job has been cosed.</h5>
+          Applications for this job has been cosed.
         </div>
       <% else %>
-        RENDER FORM HERE
+        <div id="application">
+          <%= render 'job_applications/form' %>
+        </div>
       <% end %>
     </div>
   </div>

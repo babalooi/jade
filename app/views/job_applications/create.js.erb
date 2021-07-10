@@ -1,0 +1,6 @@
+<% if @job_application.valid? %>
+  <% html = j render('job_applications/success') %>
+<% else %>
+  <% html = j render('job_applications/form') %>
+<% end %>
+$('#application').html('<%= html %>');

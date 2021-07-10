@@ -1,0 +1,31 @@
+<spacer size="40"></spacer>
+<container>
+  <row>
+    <columns>
+      <spacer size="20"></spacer>
+      <h1>JADE - Job Applications</h1>
+      <hr/>
+    </columns>
+  </row>
+
+</container>
+<container>
+  <row>
+    <columns>
+      <spacer size="20"></spacer>
+      <h5>Hello <%= @job_application.first_name %>!</h5>
+      <spacer size="20"></spacer>
+      <p>
+        You have sucessfully applied for <b><%= @job_application.job_ad.name %></b> at <b><%= @job_application.job_ad.company_name %></b>
+      </p>
+      <p>
+        We will contact you as soon when we review your application.
+      </p>
+      <p>
+        Regards<br/>
+        Jade Team
+      </p>
+    </columns>
+  </row>
+</container>
+<spacer size="40"></spacer>
