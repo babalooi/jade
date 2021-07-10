@@ -18,3 +18,11 @@ end
 300.times do
   create_job
 end
+
+
+User.create(
+  first_name: 'Jade',
+  last_name: 'Doe',
+  email: 'jd@jade.jobs',
+  password: 'jade:2021'
+)

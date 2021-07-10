@@ -24,7 +24,9 @@ class JobApplicationsController < ApplicationController
     @job_application = JobApplication.new(job_application_params)
     @job_ad = JobAd.find(params[:job_application][:job_ad].to_i)
     @job_application.job_ad = @job_ad
-    @job_application.save
+    if @job_application.save
+      JobApplicationMailer.with(job_application: @job_application).send_confirmation.deliver_now
+    end
   end
 
   # PATCH/PUT /job_applications/1 or /job_applications/1.json
