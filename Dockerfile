@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-FROM ruby:2.5
+FROM ruby:2.5.9
 RUN apt-get update -qq && apt-get install -y nodejs postgresql-client
 WORKDIR /jade-app
 COPY Gemfile /jade-app/Gemfile
