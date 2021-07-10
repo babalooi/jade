@@ -3,7 +3,8 @@
     render 'shared/page_header',
       title: @job_ad.name,
       company_name: @job_ad.company_name,
-      company_email: @job_ad.company_email
+      company_email: @job_ad.company_email,
+      deadline: @job_ad.deadline
   %>
 
   <div class="row">
@@ -11,7 +12,13 @@
       <%= simple_format(@job_ad.description) %>
     </div>
     <div class="col-12 col-lg-5 offset-lg-1">
-    Form
+      <% if @job_ad.expired? %>
+        <div class="alert alert-danger" role="alert">
+          Applications for this job has been cosed.</h5>
+        </div>
+      <% else %>
+        RENDER FORM HERE
+      <% end %>
     </div>
   </div>
 </div>

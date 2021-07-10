@@ -1,6 +1,5 @@
 def create_job
-  apply_from = Faker::Date.between(from: rand(10..20).days.ago, to: rand(5..20).days.from_now)
-  apply_to = Faker::Date.between(from: rand(0..9).days.ago, to: rand(10..20).days.from_now)
+  deadline = Faker::Date.between(from: rand(10..20).days.ago, to: rand(10..20).days.from_now)
 
   job = JobAd.new(
     name: Faker::Job.title,
@@ -8,8 +7,7 @@ def create_job
     company_name: Faker::Company.name,
     company_email: Faker::Internet.email,
     category: Faker::Company.industry,
-    apply_from: apply_from,
-    apply_to: apply_to,
+    deadline: deadline,
   )
 
   if job.valid?

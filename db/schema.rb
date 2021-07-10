@@ -21,8 +21,7 @@ ActiveRecord::Schema.define(version: 2021_07_10_085108) do
     t.string "company_name"
     t.string "company_email"
     t.string "category"
-    t.datetime "apply_from"
-    t.datetime "apply_to"
+    t.date "deadline"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

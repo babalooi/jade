@@ -12,6 +12,12 @@
           <% if local_assigns[:company_email] %>
             <p><%= mail_to company_email %></p>
           <% end %>
+          <% if local_assigns[:deadline] %>
+            <p>
+              <%= image_tag "time.svg", class: 'mr-2', width: 18, height: 18 %>
+              <%= deadline.strftime("%-d.%-m.%Y.") %>
+            </p>
+          <% end %>
         </aside>
       </div>
     </div>
