@@ -15,4 +15,12 @@ docker-compose run --rm web rails db:migrate
 docker-compose run --rm web rails db:seed
 ```
 
+Seed data will create 300 sample job ads and one user that can do CRUD on ads and review job applications.
+
+User can login under `http://localhost:3000/users/sign_in`
+```
+Email: jd@jade.jobs
+Password: jade:2021
+```
+
 If you have any questions feel free to contact me.
