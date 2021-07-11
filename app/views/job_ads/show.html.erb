@@ -1,26 +1,34 @@
-<div class="container">
-  <%=
-    render 'shared/page_header',
-      title: @job_ad.name,
-      company_name: @job_ad.company_name,
-      company_email: @job_ad.company_email,
-      deadline: @job_ad.deadline
-  %>
+<%=
+  render 'shared/page_header',
+    title: @job_ad.name,
+    company_name: @job_ad.company_name,
+    company_email: @job_ad.company_email,
+    deadline: @job_ad.deadline
+%>
 
-  <div class="row">
-    <div class="col-12 col-lg-6">
-      <%= simple_format(@job_ad.description) %>
-    </div>
-    <div class="col-12 col-lg-5 offset-lg-1">
-      <% if @job_ad.expired? %>
-        <div class="alert alert-danger" role="alert">
-          Applications for this job has been cosed.
-        </div>
-      <% else %>
-        <div id="application">
-          <%= render 'job_applications/form' %>
-        </div>
-      <% end %>
+<% if user_signed_in? %>
+  <div class="row mb-5">
+    <div class="col-12">
+        <%= link_to "Edit Job Ad", edit_job_ad_path(@job_ad), class: "btn btn-success" %>
+        <%= link_to "Delete Job Ad", job_ad_path(@job_ad), method: :delete, class: "btn btn-danger", data: {confirm: "Are you sure?"} %>
     </div>
   </div>
+<% end %>
+
+<div class="row">
+  <div class="col-12 col-lg-6">
+    <%= simple_format(@job_ad.description) %>
+  </div>
+  <div class="col-12 col-lg-5 offset-lg-1">
+    <% if @job_ad.expired? %>
+      <div class="alert alert-danger" role="alert">
+        Applications for this job has been cosed.
+      </div>
+    <% else %>
+      <div id="application">
+        <%= render 'job_applications/form' %>
+      </div>
+    <% end %>
+  </div>
 </div>
+

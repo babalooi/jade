@@ -1,25 +1,34 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <%= render 'shared/page_header', title: 'Job Applications' %>
 
-<h1>Job Applications</h1>
+  <div class="row">
+    <div class="col-12">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Full Name</th>
+            <th>Date of Birth</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Address</th>
+            <th>Qualification</th>
+            <th></th>
+          </tr>
+        </thead>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @job_applications.each do |job_application| %>
-      <tr>
-        <td><%= link_to 'Show', job_application %></td>
-        <td><%= link_to 'Edit', edit_job_application_path(job_application) %></td>
-        <td><%= link_to 'Destroy', job_application, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Job Application', new_job_application_path %>
+        <tbody>
+          <% @job_applications.each do |ja| %>
+            <tr>
+              <td><%= ja.full_name %></td>
+              <td><%= ja.date_of_birth.strftime("%-d.%-m.%Y.") %></td>
+              <td><%= mail_to ja.email %></td>
+              <td><%= ja.phone %></td>
+              <td><%= ja.address %></td>
+              <td><%= ja.qualification %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

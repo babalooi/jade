@@ -1,0 +1,46 @@
+<div class="row">
+  <div class="col-12">
+    <%= simple_form_for(@job_ad) do |f| %>
+      <%= f.error_notification %>
+      <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+      <div class="form-inputs">
+        <div class="row">
+          <div class="col-12 col-lg-8">
+            <%= f.input :description, :input_html => {:rows => 20} %>
+          </div>
+
+          <div class="col-12 col-lg-4">
+            <div class="row">
+              <div class="col-12">
+                <%= f.input :name, label: "Name / Job position" %>
+              </div>
+
+              <div class="col-12">
+                <%= f.input :company_name %>
+              </div>
+
+              <div class="col-12">
+                <%= f.input :company_email %>
+              </div>
+
+              <div class="col-12">
+                <%= f.input :category %>
+              </div>
+
+              <div class="col-12">
+                <%= f.input :deadline, order: [:day, :month, :year] %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-actions row">
+        <div class="col-12">
+          <%= f.button :submit %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

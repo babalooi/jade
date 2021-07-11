@@ -1,0 +1,7 @@
+<%=
+  render 'shared/page_header',
+    title: "Edit Job Ad",
+    company_name: @job_ad.name
+%>
+
+<%= render 'form', job_application: @job_ad %>
