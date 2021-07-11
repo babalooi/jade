@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root 'job_ads#index'
 
   resources :job_ads
-  resources :job_applications
+  resources :job_applications, only: [:show, :index, :create]
 
   devise_for :users
 end

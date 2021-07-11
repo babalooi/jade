@@ -1,5 +1,6 @@
 class JobAdsController < ApplicationController
   before_action :set_job_ad, only: %i[ show destroy edit update ]
+  before_action :authenticate_user!, except: %i[ show index ]
 
   def index
     @jobs = JobAd.order(:created_at).page params[:page]
