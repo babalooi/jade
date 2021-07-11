@@ -1,6 +1,10 @@
 class JobApplicationsController < ApplicationController
   before_action :authenticate_user!, except: %i[ create ]
 
+  def show
+    @job_application = JobApplication.find(params[:id])
+  end
+
   def index
     @job_applications = JobApplication.all
   end

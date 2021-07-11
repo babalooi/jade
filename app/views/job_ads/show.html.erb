@@ -6,6 +6,17 @@
     deadline: @job_ad.deadline
 %>
 
+<nav aria-label="breadcrumb" class="mb-5">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <%= link_to "Jobs Board", job_ads_path %>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">
+      <%= @job_ad.name %>
+    </li>
+  </ol>
+</nav>
+
 <% if user_signed_in? %>
   <div class="row mb-5">
     <div class="col-12">

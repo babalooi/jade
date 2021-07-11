@@ -6,12 +6,9 @@
       <thead>
         <tr>
           <th>Full Name</th>
-          <th>Date of Birth</th>
           <th>Email</th>
-          <th>Phone</th>
-          <th>Address</th>
-          <th>Qualification</th>
-          <th>Applied For</th>
+          <th>Applied for</th>
+          <th></th>
         </tr>
       </thead>
 
@@ -19,12 +16,9 @@
         <% @job_applications.each do |ja| %>
           <tr>
             <td><%= ja.full_name %></td>
-            <td><%= ja.date_of_birth.strftime("%-d.%-m.%Y.") %></td>
             <td><%= mail_to ja.email %></td>
-            <td><%= ja.phone %></td>
-            <td><%= ja.address %></td>
-            <td><%= ja.qualification %></td>
-            <td><%= link_to "Job Ad", job_ad_path(ja.job_ad) %></td>
+            <td><%= link_to ja.job_ad.name, job_ad_path(ja.job_ad) %></td>
+            <td><%= link_to "Details", job_application_path(ja) %></td>
           </tr>
         <% end %>
       </tbody>

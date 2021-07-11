@@ -1,0 +1,51 @@
+<%=
+  render 'shared/page_header',
+    title: @job_application.full_name
+%>
+
+<nav aria-label="breadcrumb" class="mb-5">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <%= link_to "Job Applications", job_applications_path %>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">
+      Job Application
+    </li>
+  </ol>
+</nav>
+
+<div class="row">
+  <div class="col-12">
+    <table class="table">
+      <tr>
+        <th>Email</th>
+        <td><%= mail_to @job_application.email %></td>
+      </tr>
+      <tr>
+        <th>Date of Birth</th>
+        <td><%= @job_application.date_of_birth.strftime("%-d.%-m.%Y.") %></td>
+      </tr>
+      <tr>
+        <th>Phone</th>
+        <td><%= @job_application.phone %></td>
+      </tr>
+      <tr>
+        <th>Address</th>
+        <td><%= @job_application.address %></td>
+      </tr>
+      <tr>
+        <th>Qualification</th>
+        <td><%= @job_application.qualification %></td>
+      </tr>
+      <tr>
+        <th>Applied for</th>
+        <td><%= link_to @job_application.job_ad.name, job_ad_path(@job_application.job_ad) %></td>
+      </tr>
+      <tr>
+        <th>Documentation</th>
+        <td><%= link_to "Download Documentation", "#", class: 'btn btn-primary' %></td>
+      </tr>
+    </table>
+  </div>
+</div>
+
