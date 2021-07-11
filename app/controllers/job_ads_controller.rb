@@ -11,13 +11,29 @@ class JobAdsController < ApplicationController
     end
   end
 
+  def new
+    @job_ad = JobAd.new
+  end
+
   def edit
+  end
+
+  def create
+    @job_ad = JobAd.new(job_ad_params)
+
+    respond_to do |format|
+      if @job_ad.save
+        format.html { redirect_to @job_ad, notice: "Job ad was successfully created." }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+      end
+    end
   end
 
   def update
     respond_to do |format|
       if @job_ad.update(job_ad_params)
-        format.html { redirect_to @job_ad, notice: "Job application was successfully updated." }
+        format.html { redirect_to @job_ad, notice: "Job ad was successfully updated." }
       else
         format.html { render :edit, status: :unprocessable_entity }
       end
@@ -46,7 +62,9 @@ class JobAdsController < ApplicationController
         :phone,
         :address,
         :qualification,
-        :description
+        :description,
+        :company_name,
+        :company_email
       )
     end
 end
