@@ -41,10 +41,13 @@
         <th>Applied for</th>
         <td><%= link_to @job_application.job_ad.name, job_ad_path(@job_application.job_ad) %></td>
       </tr>
-      <tr>
-        <th>Documentation</th>
-        <td><%= link_to "Download Documentation", "#", class: 'btn btn-primary' %></td>
-      </tr>
+
+      <% if @job_application.documentation.attached? %>
+        <tr>
+          <th>Documentation</th>
+          <td><%= link_to "Download Documentation", url_for(@job_application.documentation), class: 'btn btn-primary' %></td>
+        </tr>
+      <% end %>
     </table>
   </div>
 </div>

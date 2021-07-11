@@ -16,6 +16,7 @@
                 collection: JobApplication.qualifications.keys,
                 :selected => JobApplication.qualifications.keys[@job_application[:qualification].to_i],
                 input_html: { autocomplete: 'off' }  %>
+    <%= f.input :documentation, label: "Documentation (5MB .zip files only)" %>
   </div>
 
   <%= f.input :job_ad, as: :hidden, :input_html => { :value => @job_ad.id } %>

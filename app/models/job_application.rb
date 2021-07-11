@@ -19,7 +19,14 @@ class JobApplication < ApplicationRecord
       message: 'is not in valid format.'
     }
 
+  validates :documentation,
+    attached: true,
+    content_type: { in: 'application/zip', message: 'is not a ZIP' },
+    size: { less_than: 5.megabytes , message: 'is not given between size' }
+
   enum qualification: [ :VSS, :'VŠS', :SSS, :NK ]
+
+  has_one_attached :documentation
 
   def full_name
     "#{first_name} #{last_name}"

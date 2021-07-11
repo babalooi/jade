@@ -29,7 +29,8 @@ class JobApplicationsController < ApplicationController
         :phone,
         :address,
         :qualification,
-        :job_ad_id
+        :job_ad_id,
+        :documentation
       )
     end
 
