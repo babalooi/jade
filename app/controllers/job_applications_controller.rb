@@ -6,16 +6,12 @@ class JobApplicationsController < ApplicationController
   end
 
   def index
-    @job_applications = JobApplication.all
+    @job_applications = JobApplication.all.page params[:page]
   end
 
   def create
-    @job_application = JobApplication.new(job_application_params)
-    @job_ad = JobAd.find(params[:job_application][:job_ad].to_i)
-    @job_application.job_ad = @job_ad
-    if @job_application.save
-      JobApplicationMailer.with(job_application: @job_application).send_confirmation.deliver_now
-    end
+    @job_application_creator = JobApplicationCreator.new(job_application_params, params[:job_application][:job_ad].to_i)
+    @job_application = @job_application_creator.call
   end
 
   private
