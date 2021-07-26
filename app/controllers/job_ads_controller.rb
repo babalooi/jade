@@ -7,9 +7,7 @@ class JobAdsController < ApplicationController
   end
 
   def show
-    unless @job_ad.expired?
-      @job_application = JobApplication.new
-    end
+      @job_application = JobApplication.new unless @job_ad.expired?
   end
 
   def new
@@ -24,7 +22,7 @@ class JobAdsController < ApplicationController
 
     respond_to do |format|
       if @job_ad.save
-        format.html { redirect_to @job_ad, notice: "Job ad was successfully created." }
+        format.html { redirect_to @job_ad, notice: t('controllers.job_ads.create.flash.notice') }
       else
         format.html { render :new, status: :unprocessable_entity }
       end
@@ -34,7 +32,7 @@ class JobAdsController < ApplicationController
   def update
     respond_to do |format|
       if @job_ad.update(job_ad_params)
-        format.html { redirect_to @job_ad, notice: "Job ad was successfully updated." }
+        format.html { redirect_to @job_ad, notice: t('controllers.job_ads.update.flash.notice') }
       else
         format.html { render :edit, status: :unprocessable_entity }
       end
@@ -44,7 +42,7 @@ class JobAdsController < ApplicationController
   def destroy
     @job_ad.destroy
     respond_to do |format|
-      format.html { redirect_to root_url, notice: "Job ad was successfully deleted." }
+      format.html { redirect_to root_url, notice: t('controllers.job_ads.delete.flash.notice') }
     end
   end
 

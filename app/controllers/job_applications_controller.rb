@@ -12,6 +12,7 @@ class JobApplicationsController < ApplicationController
   def create
     @job_application_creator = JobApplicationCreator.new(job_application_params, params[:job_application][:job_ad].to_i)
     @job_application = @job_application_creator.call
+    @job_ad = JobAd.find(params[:job_application][:job_ad].to_i)
   end
 
   private

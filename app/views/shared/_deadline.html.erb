@@ -1,5 +1,5 @@
 <% if job.expired? %>
-  <span class="badge badge-danger">Expired</span>
+  <span class="badge badge-danger"><%= t('views.job_ads.expired') %></span>
 <% else %>
   <%= image_tag "time.svg", class: 'mr-2', width: 18, height: 18 %>
   <%= job.deadline.strftime("%-d.%-m.%Y.") %>

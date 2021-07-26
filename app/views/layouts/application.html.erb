@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Job Advertisement &mdash; Jade</title>
+    <title><%= t('app.title').html_safe %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -24,12 +24,12 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item">
-                <%= link_to "Jobs Board", root_path, class: 'nav-link' %>
+                <%= link_to t('main_menu.home'), root_path, class: 'nav-link' %>
               </li>
 
               <% if user_signed_in? %>
                 <li class="nav-item">
-                  <%= link_to "Job Applications", job_applications_path, class: 'nav-link' %>
+                  <%= link_to t('main_menu.job_applications'), job_applications_path, class: 'nav-link' %>
                 </li>
               <% end %>
             </ul>
@@ -38,11 +38,11 @@
             <ul class="navbar-nav ml-auto">
               <% if user_signed_in? %>
                 <li class="nav-item">
-                  <%= link_to "#{current_user.full_name} &mdash; Log out".html_safe, destroy_user_session_path, method: :delete, class: 'nav-link' %>
+                  <%= link_to t('main_menu.logout', user: current_user.full_name).html_safe, destroy_user_session_path, method: :delete, class: 'nav-link' %>
                 </li>
               <% else %>
                 <li class="nav-item">
-                  <%= link_to "Log in", new_user_session_path, class: 'nav-link' %>
+                  <%= link_to t('main_menu.login'), new_user_session_path, class: 'nav-link' %>
                 </li>
               <% end %>
             </ul>

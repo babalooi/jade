@@ -9,7 +9,7 @@
       <%= link_to "Job Applications", job_applications_path %>
     </li>
     <li class="breadcrumb-item active" aria-current="page">
-      Job Application
+      <%= @job_application.full_name %>
     </li>
   </ol>
 </nav>
@@ -18,34 +18,34 @@
   <div class="col-12">
     <table class="table">
       <tr>
-        <th>Email</th>
+        <th><%= t('activerecord.attributes.job_application.email') %></th>
         <td><%= mail_to @job_application.email %></td>
       </tr>
       <tr>
-        <th>Date of Birth</th>
+        <th><%= t('activerecord.attributes.job_application.date_of_birth') %></th>
         <td><%= @job_application.date_of_birth.strftime("%-d.%-m.%Y.") %></td>
       </tr>
       <tr>
-        <th>Phone</th>
+        <th><%= t('activerecord.attributes.job_application.phone') %></th>
         <td><%= @job_application.phone %></td>
       </tr>
       <tr>
-        <th>Address</th>
+        <th><%= t('activerecord.attributes.job_application.address') %></th>
         <td><%= @job_application.address %></td>
       </tr>
       <tr>
-        <th>Qualification</th>
+        <th><%= t('activerecord.attributes.job_application.qualification') %></th>
         <td><%= @job_application.qualification %></td>
       </tr>
       <tr>
-        <th>Applied for</th>
+        <th><%= t('activerecord.attributes.job_application.applied_for') %></th>
         <td><%= link_to @job_application.job_ad.name, job_ad_path(@job_application.job_ad) %></td>
       </tr>
 
       <% if @job_application.documentation.attached? %>
         <tr>
-          <th>Documentation</th>
-          <td><%= link_to "Download Documentation", url_for(@job_application.documentation), class: 'btn btn-primary' %></td>
+          <th><%= t('activerecord.attributes.job_application.documentation') %></th>
+          <td><%= link_to t('views.job_applications.table.download_documentation'), url_for(@job_application.documentation), class: 'btn btn-primary' %></td>
         </tr>
       <% end %>
     </table>

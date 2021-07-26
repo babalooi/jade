@@ -11,9 +11,9 @@
     <table class="table">
       <thead>
         <tr>
-          <th>Full Name</th>
-          <th>Email</th>
-          <th>Applied for</th>
+          <th><%= t('activerecord.attributes.job_application.full_name') %></th>
+          <th><%= t('activerecord.attributes.job_application.email') %></th>
+          <th><%= t('activerecord.attributes.job_application.applied_for') %></th>
           <th></th>
         </tr>
       </thead>
@@ -23,8 +23,8 @@
           <tr>
             <td><%= ja.full_name %></td>
             <td><%= mail_to ja.email %></td>
-            <td><%= link_to ja.job_ad.name, job_ad_path(ja.job_ad) %></td>
-            <td><%= link_to "Details", job_application_path(ja) %></td>
+            <td><%= link_to ja.applied_for, job_ad_path(ja.job_ad) %></td>
+            <td><%= link_to t('views.job_applications.table.details'), job_application_path(ja) %></td>
           </tr>
         <% end %>
       </tbody>

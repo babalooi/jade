@@ -1,33 +1,120 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   'true': 'foo'
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  app:
+    title: "Job Advertisement &mdash; Jade"
+  helpers:
+    submit:
+      create: "Create New %{model}"
+      update: "Update %{model}"
+      delete: "Delete %{model}"
+  activerecord:
+    errors:
+      models:
+        job_application:
+          attributes:
+            first_name:
+              blank: "can't be blank."
+            last_name:
+              blank: "can't be blank."
+            date_of_birth:
+              blank: "can't be blank."
+            address:
+              blank: "can't be blank."
+            qualification:
+              blank: "can't be blank."
+            phone:
+              blank: "can't be blank."
+              invalid: "must have numbers only. No letters allowed."
+            email:
+              blank: "can't be blank."
+              invalid: "is not in valid format."
+            documentation:
+              blank: "can't be blank."
+              file_size_out_of_range: "size %{file_size} is not between required range."
+              content_type_invalid: "has an invalid content type."
+        job_ad:
+          attributes:
+            name:
+              blank: "can't be blank."
+            description:
+              blank: "can't be blank."
+            company_name:
+              blank: "can't be blank."
+            deadline:
+              blank: "can't be blank."
+            category:
+              blank: "can't be blank."
+            company_email:
+              blank: "can't be blank."
+              invalid: "is not in valid format."
+    attributes:
+      job_ad:
+        name: "Name / Job position"
+        company_name: "Company Name"
+        company_email: "Company Email"
+        category: "Category"
+        deadline: "Deadline"
+        description: "Description"
+      job_application:
+        full_name: "Full Name"
+        applied_for: "Applied for"
+        first_name: "First Name"
+        last_name: "Last Name"
+        date_of_birth: "Date of Birth"
+        email: "Email"
+        phone: "Phone"
+        address: "Address"
+        qualification: "Qualification"
+        documentation: "Documentation"
+  controllers:
+    job_ads:
+      create:
+        flash:
+          notice: "Job ad was successfully created."
+      update:
+        flash:
+          notice: "Job ad was successfully updated."
+      delete:
+        flash:
+          notice: "Job ad was successfully deleted."
+  main_menu:
+    home: "Jobs Board"
+    applications: "Job Applications"
+    login: "Log in"
+    logout: "%{user} &mdash; Log out"
+  views:
+    job_ads:
+      title: "Jobs Board"
+      add_new: "Add New Job Ad"
+      edit: "Edit"
+      editing: "Editing Job Ad"
+      delete: "Delete"
+      expired: "Expired"
+      closed: "Applications for this job has been cosed."
+      new: "New Job Ad"
+    job_applications:
+      table:
+        details: "Details"
+        download_documentation: "Download Documentation"
+      form:
+        documentation:
+          label: "Documentation (5MB .zip files only)"
+        submit: "Apply for position"
+      success:
+        message: "Application was successfully submitted."
+  emails:
+    title: "JADE - Job Applications"
+    confirmation:
+      hello: "Hello %{name}!"
+      message: "
+        <p>
+          You have sucessfully applied for <b>%{job_ad_name}</b> at <b>%{job_ad_company}</b>
+        </p>
+        <p>
+          We will contact you as soon when we review your application.
+        </p>
+        <p>
+          Regards<br/>
+          Jade Team
+        </p>"
+
+

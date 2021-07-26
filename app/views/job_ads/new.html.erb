@@ -1,6 +1,6 @@
 <%=
   render 'shared/page_header',
-    title: "New Job Ad"
+    title: t('views.job_ads.new')
 %>
 
 <nav aria-label="breadcrumb" class="mb-5">
@@ -9,7 +9,7 @@
       <%= link_to "Jobs Board", root_path %>
     </li>
     <li class="breadcrumb-item active" aria-current="page">
-      New Job Ad
+      <%= t('views.job_ads.new') %>
     </li>
   </ol>
 </nav>

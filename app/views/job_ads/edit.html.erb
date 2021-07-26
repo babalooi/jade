@@ -1,13 +1,13 @@
 <%=
   render 'shared/page_header',
-    title: "Edit Job Ad",
+    title: t('views.job_ads.editing'),
     company_name: @job_ad.name
 %>
 
 <nav aria-label="breadcrumb" class="mb-5">
   <ol class="breadcrumb">
     <li class="breadcrumb-item">
-      <%= link_to "Jobs Board", root_path %>
+      <%= link_to t('views.job_ads.title'), root_path %>
     </li>
     <li class="breadcrumb-item active" aria-current="page">
       <%= @job_ad.name %>

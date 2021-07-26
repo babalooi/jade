@@ -9,7 +9,7 @@
 <nav aria-label="breadcrumb" class="mb-5">
   <ol class="breadcrumb">
     <li class="breadcrumb-item">
-      <%= link_to "Jobs Board", job_ads_path %>
+      <%= link_to t('views.job_ads.title'), job_ads_path %>
     </li>
     <li class="breadcrumb-item active" aria-current="page">
       <%= @job_ad.name %>
@@ -20,8 +20,8 @@
 <% if user_signed_in? %>
   <div class="row mb-5">
     <div class="col-12">
-        <%= link_to "Edit Job Ad", edit_job_ad_path(@job_ad), class: "btn btn-success" %>
-        <%= link_to "Delete Job Ad", job_ad_path(@job_ad), method: :delete, class: "btn btn-danger", data: {confirm: "Are you sure?"} %>
+        <%= link_to t('views.job_ads.edit'), edit_job_ad_path(@job_ad), class: "btn btn-success" %>
+        <%= link_to t('views.job_ads.delete'), job_ad_path(@job_ad), method: :delete, class: "btn btn-danger", data: {confirm: "Are you sure?"} %>
     </div>
   </div>
 <% end %>
@@ -33,7 +33,7 @@
   <div class="col-12 col-lg-5 offset-lg-1">
     <% if @job_ad.expired? %>
       <div class="alert alert-danger" role="alert">
-        Applications for this job has been cosed.
+        <%= t('views.job_ads.closed') %>
       </div>
     <% else %>
       <div id="application">
