@@ -6,7 +6,7 @@ class JobApplicationsController < ApplicationController
   end
 
   def index
-    @job_applications = JobApplication.all.page params[:page]
+    @job_applications = JobApplication.order(:created_at).page params[:page]
   end
 
   def create
