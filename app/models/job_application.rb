@@ -20,8 +20,8 @@ class JobApplication < ApplicationRecord
 
   validates :documentation,
     attached: true,
-    content_type: { in: 'application/zip', message: 'is not a ZIP' },
-    size: { less_than: 5.megabytes , message: 'is not given between size' }
+    content_type: { in: 'application/zip' },
+    size: { less_than: 5.megabytes }
 
   enum qualification: [ :VSS, :'VŠS', :SSS, :NK ]
 
