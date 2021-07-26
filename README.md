@@ -1,24 +1,28 @@
-# README
+# How to run on local machine
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+```
+  git clone git@github.com:babalooi/jade.git
+  cd jade
+  docker-compose build
+```
 
-Things you may want to cover:
+If build fails or hangs over fiew minutes on `# Installing sassc 2.4.0 with native extensions` increase docker memory under resources.
 
-* Ruby version
+```
+docker-compose up -d
+docker-compose run --rm web rails db:create
+docker-compose run --rm web rails db:migrate
+docker-compose run --rm web rails db:seed
+```
 
-* System dependencies
+Seed data will create 300 sample job ads and one user that can do CRUD on ads and review job applications.
 
-* Configuration
+User can login under `http://localhost:3000/users/sign_in`
+```
+Email: jd@jade.jobs
+Password: jade:2021
+```
 
-* Database creation
+Email for job application can be previewed on `http://localhost:3000/rails/mailers/job_application_mailer/send_confirmation` but at least one job application must be submitted.
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+If you have any questions feel free to contact me.
