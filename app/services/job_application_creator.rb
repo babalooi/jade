@@ -17,13 +17,13 @@ class JobApplicationCreator
       @job_ad = JobAd.find(@job_ad_id)
       @job_application.job_ad = @job_ad
     rescue => e
-      Rails.logger.error "Can't do that because #{e.to_s}"
+      Rails.logger.error "Can't set Job Ad because #{e.to_s}"
     end
 
     def save
       @job_application.save!
     rescue => e
-      Rails.logger.error "Can't do that because #{e.to_s}"
+      Rails.logger.error "Can't save Job Application because #{e.to_s}"
     end
 
     def send_email

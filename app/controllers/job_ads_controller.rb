@@ -3,11 +3,11 @@ class JobAdsController < ApplicationController
   before_action :authenticate_user!, except: %i[ show index ]
 
   def index
-    @jobs = JobAd.order(:created_at).page params[:page]
+    @jobs = JobAd.order(created_at: :desc).page params[:page]
   end
 
   def show
-      @job_application = JobApplication.new unless @job_ad.expired?
+    @job_application = JobApplication.new unless @job_ad.expired?
   end
 
   def new
@@ -19,11 +19,12 @@ class JobAdsController < ApplicationController
 
   def create
     @job_ad = JobAd.new(job_ad_params)
-
     respond_to do |format|
       if @job_ad.save
+        logger.info "Successfully created Job Ad #{@job_ad.name}"
         format.html { redirect_to @job_ad, notice: t('controllers.job_ads.create.flash.notice') }
       else
+        logger.error "Can't create Job Ad due to #{@job_ad.errors.messages.to_s}"
         format.html { render :new, status: :unprocessable_entity }
       end
     end
@@ -50,6 +51,8 @@ class JobAdsController < ApplicationController
 
     def set_job_ad
       @job_ad = JobAd.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      logger.error "Job Ad with id #{params[:id]} not found!"
     end
 
     def job_ad_params
