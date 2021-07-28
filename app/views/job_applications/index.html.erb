@@ -8,27 +8,16 @@
 
 <div class="row">
   <div class="col-12">
-    <table class="table">
-      <thead>
-        <tr>
-          <th><%= t('activerecord.attributes.job_application.full_name') %></th>
-          <th><%= t('activerecord.attributes.job_application.email') %></th>
-          <th><%= t('activerecord.attributes.job_application.applied_for') %></th>
-          <th></th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <% @job_applications.each do |ja| %>
-          <tr>
-            <td><%= ja.full_name %></td>
-            <td><%= mail_to ja.email %></td>
-            <td><%= link_to ja.applied_for, job_ad_path(ja.job_ad) %></td>
-            <td><%= link_to t('views.job_applications.table.details'), job_application_path(ja) %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+    <% if @job_applications.any? %>
+      <%= render 'list' %>
+    <% else %>
+      <div class="p-3 text-center">
+        <h2>
+          :(<br>
+          Sorry. No applications yet.
+        </h2>
+      </div>
+    <% end %>
   </div>
 </div>
 
