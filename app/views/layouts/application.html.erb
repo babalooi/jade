@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="h-100">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,51 +11,14 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="d-flex flex-column h-100">
+    <%= render 'shared/navigation' %>
 
-    <div class="mt-2">
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-          <%= link_to("#{image_tag('logo.svg', width: 40, class: 'mr-2')} Job Advertisement".html_safe, root_path, class: 'navbar-brand') %>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-              <li class="nav-item">
-                <%= link_to t('main_menu.home'), root_path, class: 'nav-link' %>
-              </li>
-
-              <% if user_signed_in? %>
-                <li class="nav-item">
-                  <%= link_to t('main_menu.job_applications'), job_applications_path, class: 'nav-link' %>
-                </li>
-              <% end %>
-            </ul>
-
-
-            <ul class="navbar-nav ml-auto">
-              <% if user_signed_in? %>
-                <li class="nav-item">
-                  <%= link_to t('main_menu.logout', user: current_user.full_name).html_safe, destroy_user_session_path, method: :delete, class: 'nav-link' %>
-                </li>
-              <% else %>
-                <li class="nav-item">
-                  <%= link_to t('main_menu.login'), new_user_session_path, class: 'nav-link' %>
-                </li>
-              <% end %>
-            </ul>
-
-          </div>
-        </div>
-      </nav>
-    </div>
-
-
-    <div class="container">
+    <div class="container flex-shrink-0">
       <%= render 'shared/alerts' %>
       <%= yield %>
     </div>
+
+    <%= render 'shared/footer' %>
   </body>
 </html>
