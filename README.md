@@ -1,12 +1,12 @@
 # How to run on local machine
 
 ```
-  git clone git@github.com:babalooi/jade.git
+  git clone git@github.com:darko-komericki/jade.git
   cd jade
   docker-compose build
 ```
 
-If build fails or hangs over fiew minutes on `# Installing sassc 2.4.0 with native extensions` increase docker memory under resources.
+If build fails or hangs over few minutes on `# Installing sassc 2.4.0 with native extensions` increase docker memory under resources.
 
 ```
 docker-compose up -d
